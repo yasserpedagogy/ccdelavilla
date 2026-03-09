@@ -6,193 +6,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Comunidad Cristiana de la Villa{% endblock %}</title>
+
+    <!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}?v=3">
     
-    <!-- Tachyons CSS (exactamente como en el original) -->
+    <!-- Tachyons CSS -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
     
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@200;300;400&family=Source+Sans+Pro:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@200;300;400&family=Source+Sans+Pro:wght@200;300;400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome para iconos -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     
-<style>
-    /* TODO EL TEXTO por defecto en LIGHT 300 (un poco más grueso que 200) */
-    body, p, li, div, section, article, span, 
-    h1, h2, h3, h4, h5, h6, a, .link, .button, button, input, label {
-        font-family: 'Source Sans Pro', sans-serif;
-        font-weight: 300;  /* Light (no tan extremo) */
-        letter-spacing: -0.01em;
-        color: #2d2d2d;
-    }
+    <style>
+        /* Tus estilos existentes (se mantienen igual) */
+        body, p, li, div, section, article, span, 
+        h1, h2, h3, h4, h5, h6, a, .link, .button, button, input, label {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            color: #2d2d2d;
+        }
 
-    /* Merriweather también LIGHT */
-    .merriweather, h2.merriweather {
-        font-family: 'Merriweather', serif;
-        font-weight: 300;
-    }
+        .merriweather, h2.merriweather {
+            font-family: 'Merriweather', serif;
+            font-weight: 300;
+        }
 
-    /* HERO - AUMENTAMOS TAMAÑOS */
-    .hero h1 {
-        font-family: 'Source Sans Pro', sans-serif;
-        font-weight: 300;
-        font-size: 4rem;        /* Más grande */
-        letter-spacing: -0.02em;
-        color: white;
-        line-height: 1.2;
-    }
+        .hero h1 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 300;
+            font-size: 4rem;
+            letter-spacing: -0.02em;
+            color: white;
+            line-height: 1.2;
+        }
 
-    /* "Una familia con propósito" - MÁS GRANDE */
-    .hero p {
-        font-family: 'Source Sans Pro', sans-serif;
-        font-weight: 300;
-        font-size: 2rem;         /* ¡Duplicado! */
-        color: rgba(255,255,255,0.9);
-        margin-top: 1rem;
-        margin-bottom: 2rem;
-    }
+        .hero p {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 300;
+            font-size: 2rem;
+            color: rgba(255,255,255,0.9);
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
 
-    /* Botones del hero más grandes */
-    .hero .f6 {
-        font-size: 1.2rem !important;  /* Más grande que f6 */
-        padding: 1rem 2.5rem !important;
-    }
+        .hero .f6 {
+            font-size: 1.2rem !important;
+            padding: 1rem 2.5rem !important;
+        }
 
-    /* Títulos de sección más grandes */
-    h2.merriweather {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-    }
+        h2.merriweather {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
 
-    /* Texto de las tarjetas más legible */
-    .grid-item p, .lh-copy {
-        font-size: 1.2rem;
-        line-height: 1.5;
-    }
+        .grid-item p, .lh-copy {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
 
-    /* Tus estilos existentes */
-    #main { padding-top: 80px; }
+        #main { padding-top: 80px; }
 
-    .hero {
-        background-color: #2d2d2d;
-        background-image: url('{% static 'images/hero-bg.jpg' %}');
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        color: white;
-        min-height: 600px;  /* Altura mínima */
-    }
+        .hero {
+            background-color: #2d2d2d;
+            background-image: url('{% static 'images/hero-bg.jpg' %}');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+            min-height: 600px;
+        }
 
-    .hero-overlay {
-        background-color: rgba(0,0,0,0.5);
-    }
+        .hero-overlay {
+            background-color: rgba(0,0,0,0.5);
+        }
 
-    .bg-gold { background-color: #E0B354; }
-    .gold { color: #E0B354; }
+        .bg-gold { background-color: #E0B354; }
+        .gold { color: #E0B354; }
+        
+        /* Estilo para pestaña activa */
+        .nav-active {
+            color: #E0B354 !important;
+            font-weight: 600 !important;
+            border-bottom: 2px solid #E0B354;
+        }
+        
+        /* Estilo para el logo */
+        .logo img {
+            max-height: 50px;
+            width: auto;
+            vertical-align: middle;
+        }
 
-    /* ===== ESTILOS RESPONSIVE PARA MÓVIL ===== */
+        /* ===== ESTILOS RESPONSIVE ===== */
+        @media screen and (max-width: 60em) {
+            header.fixed { padding: 0.5rem 0; }
+            .logo img { max-height: 40px; }
+            .hero h1 { font-size: 2.5rem !important; }
+            .hero p { font-size: 1.3rem !important; }
+            .hero .f6 { font-size: 1rem !important; padding: 0.8rem 1.5rem !important; }
+            .fl.w-25-l { width: 100% !important; float: none !important; margin-bottom: 2rem !important; }
+            .ph4.ph5-l { padding-left: 1rem !important; padding-right: 1rem !important; }
+            footer .w-25-l { width: 100% !important; margin-bottom: 2rem; }
+        }
 
-/* Header más compacto en móvil */
-@media screen and (max-width: 60em) {
-    header.fixed {
-        padding: 0.5rem 0;
-    }
-    
-    .logo a {
-        font-size: 1.2rem !important;
-    }
-    
-    /* Hero ajustado */
-    .hero h1 {
-        font-size: 2.5rem !important;
-    }
-    
-    .hero p {
-        font-size: 1.3rem !important;
-    }
-    
-    /* Botones más pequeños */
-    .hero .f6 {
-        font-size: 1rem !important;
-        padding: 0.8rem 1.5rem !important;
-    }
-    
-    /* Grid de 4 columnas se convierte en 1 columna */
-    .fl.w-25-l {
-        width: 100% !important;
-        float: none !important;
-        margin-bottom: 2rem !important;
-    }
-    
-    /* Ajuste de contenedor */
-    .ph4.ph5-l {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-    }
-    
-    /* Footer en columna */
-    footer .w-25-l {
-        width: 100% !important;
-        margin-bottom: 2rem;
-    }
-}
-
-/* Móviles muy pequeños */
-@media screen and (max-width: 30em) {
-    .hero h1 {
-        font-size: 2rem !important;
-    }
-    
-    .hero p {
-        font-size: 1.1rem !important;
-    }
-    
-    h2.merriweather {
-        font-size: 1.8rem !important;
-    }
-}
-</style>
+        @media screen and (max-width: 30em) {
+            .hero h1 { font-size: 2rem !important; }
+            .hero p { font-size: 1.1rem !important; }
+            h2.merriweather { font-size: 1.8rem !important; }
+        }
+    </style>
     {% block extra_css %}{% endblock %}
 </head>
 <body class="sans-serif">
-  <header class="fixed w-100 top-0 z-999 bg-white shadow-1">
-    <nav class="ph4 ph5-l pv3">
-        <div class="flex justify-between items-center">
-            <div class="logo">
-                <a href="{% url 'core:home' %}" class="link near-black hover-gold f3 f2-ns">Comunidad Cristiana <span class="gold">de la Villa</span></a>
-            </div>
-            <div class="dn db-l">
-                <ul class="list pl0 flex items-center">
-                    <li class="mr4"><a href="{% url 'core:home' %}" class="link near-black hover-gold f6 f5-ns active">Inicio</a></li>
-                    <li class="mr4"><a href="{% url 'core:about' %}" class="link near-black hover-gold f6 f5-ns">Acerca de</a></li>
-                    <li class="mr4"><a href="{% url 'sermons:list' %}" class="link near-black hover-gold f6 f5-ns">Sermones</a></li>
-                    <li class="mr4"><a href="{% url 'blog:list' %}" class="link near-black hover-gold f6 f5-ns">Blog</a></li>
-                    <li class="mr4"><a href="{% url 'ministries:list' %}" class="link near-black hover-gold f6 f5-ns">Ministerios</a></li>
-                    <li class="mr4"><a href="{% url 'gallery:index' %}" class="link near-black hover-gold f6 f5-ns">Galería</a></li>
-                    <li class="mr4"><a href="{% url 'core:contact' %}" class="link near-black hover-gold f6 f5-ns">Contacto</a></li>
-                     
-                </ul>
-            </div>
-            <!-- Menú para móvil (hamburguesa) -->
-<div class="db dn-l">
-    <button class="btn-toggle-menu bg-transparent bn pointer">
-        <i class="fas fa-bars fa-2x gold"></i>
-    </button>
-    <div class="mobile-menu dn absolute left-0 right-0 bg-white shadow-5">
-        <ul class="list pl0 mv0">
-            <li class="bt b--light-gray"><a href="{% url 'core:home' %}" class="db pa3 link near-black hover-gold">Inicio</a></li>
-            <li class="bt b--light-gray"><a href="{% url 'core:about' %}" class="db pa3 link near-black hover-gold">Acerca de</a></li>
-            <li class="bt b--light-gray"><a href="{% url 'sermons:list' %}" class="db pa3 link near-black hover-gold">Sermones</a></li>
-            <li class="bt b--light-gray"><a href="{% url 'blog:list' %}" class="db pa3 link near-black hover-gold">Blog</a></li>
-            <li class="bt b--light-gray"><a href="{% url 'ministries:list' %}" class="db pa3 link near-black hover-gold">Ministerios</a></li>
-            <li class="bt b--light-gray"><a href="{% url 'gallery:index' %}" class="db pa3 link near-black hover-gold">Galería</a></li>
-            <li class="bt b--light-gray"><a href="{% url 'core:contact' %}" class="db pa3 link near-black hover-gold">Contacto</a></li>
-            
-        </ul>
-    </div>
+    <header class="fixed w-100 top-0 z-999 bg-white shadow-1">
+        <nav class="ph4 ph5-l pv3">
+            <div class="flex justify-between items-center">
+                <div class="logo flex items-center">
+    <a href="{% url 'core:home' %}" class="link near-black flex items-center">
+        <img src="{% static 'images/logo.jpg' %}" alt="Comunidad Cristiana de la Villa" class="mr2" style="max-height: 40px;">
+        <span class="f3 f2-ns">Comunidad Cristiana <span class="gold">de la Villa</span></span>
+    </a>
 </div>
-        </div>
-    </nav>
-</header>
+                
+                <!-- Menú para escritorio -->
+                <div class="dn db-l">
+                    <ul class="list pl0 flex items-center">
+                        <li class="mr4"><a href="{% url 'core:home' %}" class="link near-black hover-gold f6 f5-ns {% if request.path == '/' %}nav-active{% endif %}">Inicio</a></li>
+                        <li class="mr4"><a href="{% url 'core:about' %}" class="link near-black hover-gold f6 f5-ns {% if request.path == '/about/' %}nav-active{% endif %}">Acerca de</a></li>
+                        <li class="mr4"><a href="{% url 'sermons:list' %}" class="link near-black hover-gold f6 f5-ns {% if request.path == '/sermones/' %}nav-active{% endif %}">Sermones</a></li>
+                        <li class="mr4"><a href="{% url 'blog:list' %}" class="link near-black hover-gold f6 f5-ns {% if request.path == '/blog/' %}nav-active{% endif %}">Blog</a></li>
+                        <li class="mr4"><a href="{% url 'ministries:list' %}" class="link near-black hover-gold f6 f5-ns {% if request.path == '/ministerios/' %}nav-active{% endif %}">Ministerios</a></li>
+                        <li class="mr4"><a href="{% url 'gallery:index' %}" class="link near-black hover-gold f6 f5-ns {% if request.path == '/galeria/' %}nav-active{% endif %}">Galería</a></li>
+                        <li class="mr4"><a href="{% url 'core:contact' %}" class="link near-black hover-gold f6 f5-ns {% if request.path == '/contact/' %}nav-active{% endif %}">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Menú para móvil (hamburguesa) -->
+                <div class="db dn-l">
+                    <button class="btn-toggle-menu bg-transparent bn pointer">
+                        <i class="fas fa-bars fa-2x gold"></i>
+                    </button>
+                    <div class="mobile-menu dn absolute left-0 right-0 bg-white shadow-5">
+                        <ul class="list pl0 mv0">
+                            <li class="bt b--light-gray"><a href="{% url 'core:home' %}" class="db pa3 link near-black hover-gold {% if request.path == '/' %}nav-active{% endif %}">Inicio</a></li>
+                            <li class="bt b--light-gray"><a href="{% url 'core:about' %}" class="db pa3 link near-black hover-gold {% if request.path == '/about/' %}nav-active{% endif %}">Acerca de</a></li>
+                            <li class="bt b--light-gray"><a href="{% url 'sermons:list' %}" class="db pa3 link near-black hover-gold {% if request.path == '/sermones/' %}nav-active{% endif %}">Sermones</a></li>
+                            <li class="bt b--light-gray"><a href="{% url 'blog:list' %}" class="db pa3 link near-black hover-gold {% if request.path == '/blog/' %}nav-active{% endif %}">Blog</a></li>
+                            <li class="bt b--light-gray"><a href="{% url 'ministries:list' %}" class="db pa3 link near-black hover-gold {% if request.path == '/ministerios/' %}nav-active{% endif %}">Ministerios</a></li>
+                            <li class="bt b--light-gray"><a href="{% url 'gallery:index' %}" class="db pa3 link near-black hover-gold {% if request.path == '/galeria/' %}nav-active{% endif %}">Galería</a></li>
+                            <li class="bt b--light-gray"><a href="{% url 'core:contact' %}" class="db pa3 link near-black hover-gold {% if request.path == '/contact/' %}nav-active{% endif %}">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <main id="main">
         {% if messages %}
@@ -207,52 +179,51 @@
         {% endblock %}
     </main>
 
-  <footer class="bg-near-black white pv5">
-    <div class="ph4 ph5-l" style="max-width: 1200px; margin: 0 auto;">
-        <div class="flex flex-wrap">
-            <div class="w-100 w-25-l ph3">
-                <h4 class="merriweather f5 ttu tracked gold">Comunidad Cristiana</h4>
-                <p class="f6 white-70 lh-copy">Viviendo en el poder del evangelio</p>
-            </div>
-            <div class="w-100 w-25-l ph3">
-                <h4 class="merriweather f5 ttu tracked gold">Contacto</h4>
-                <ul class="list pl0">
-                    <li class="mb2"><i class="fas fa-map-marker-alt gold mr2"></i><span class="f6 white-70">San Antonio 257 e/ Maceo y Máximo Gómez, Guanabacoa, La Habana, Cuba</span></li>
-                    <li class="mb2"><i class="fas fa-phone gold mr2"></i><span class="f6 white-70">+53 59676677</span></li>
-                    <li class="mb2"><i class="fas fa-envelope gold mr2"></i><span class="f6 white-70">c.c.delavilla@gmail.com</span></li>
-                </ul>
-            </div>
-            <div class="w-100 w-25-l ph3">
-                <h4 class="merriweather f5 ttu tracked gold">Horarios</h4>
-                <ul class="list pl0">
-                    <li class="mb2"><span class="f6 white-70"><span class="gold">Domingos:</span> 10:30 y 19:00</span></li>
-                    <li class="mb2"><span class="f6 white-70"><span class="gold">Miércoles:</span> 20:00 (Oración)</span></li>
-                </ul>
-            </div>
-            <div class="w-100 w-25-l ph3">
-                <h4 class="merriweather f5 ttu tracked gold">Síguenos</h4>
-                <div class="flex">
-                    <a href="https://www.facebook.com/comunidadcristianadelavilla" class="white-70 hover-gold mr3"><i class="fab fa-facebook-f fa-lg"></i></a>
-                    <a href="#" class="white-70 hover-gold mr3"><i class="fab fa-instagram fa-lg"></i></a>
-                    <a href="https://www.youtube.com/@ccdelavilla" class="white-70 hover-gold mr3"><i class="fab fa-youtube fa-lg"></i></a>
+    <footer class="bg-near-black white pv5">
+        <div class="ph4 ph5-l" style="max-width: 1200px; margin: 0 auto;">
+            <div class="flex flex-wrap">
+                <div class="w-100 w-25-l ph3">
+                    <h4 class="merriweather f5 ttu tracked gold">Comunidad Cristiana</h4>
+                    <p class="f6 white-70 lh-copy">Viviendo en el poder del evangelio</p>
+                </div>
+                <div class="w-100 w-25-l ph3">
+                    <h4 class="merriweather f5 ttu tracked gold">Contacto</h4>
+                    <ul class="list pl0">
+                        <li class="mb2"><i class="fas fa-map-marker-alt gold mr2"></i><span class="f6 white-70">San Antonio 257 e/ Maceo y Máximo Gómez, Guanabacoa, La Habana, Cuba</span></li>
+                        <li class="mb2"><i class="fas fa-phone gold mr2"></i><span class="f6 white-70">+53 59676677</span></li>
+                        <li class="mb2"><i class="fas fa-envelope gold mr2"></i><span class="f6 white-70">c.c.delavilla@gmail.com</span></li>
+                    </ul>
+                </div>
+                <div class="w-100 w-25-l ph3">
+                    <h4 class="merriweather f5 ttu tracked gold">Horarios</h4>
+                    <ul class="list pl0">
+                        <li class="mb2"><span class="f6 white-70"><span class="gold">Domingos:</span> 10:30 y 19:00</span></li>
+                        <li class="mb2"><span class="f6 white-70"><span class="gold">Miércoles:</span> 20:00 (Oración)</span></li>
+                    </ul>
+                </div>
+                <div class="w-100 w-25-l ph3">
+                    <h4 class="merriweather f5 ttu tracked gold">Síguenos</h4>
+                    <div class="flex">
+                        <a href="https://www.facebook.com/comunidadcristianadelavilla" class="white-70 hover-gold mr3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="white-70 hover-gold mr3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.youtube.com/@ccdelavilla" class="white-70 hover-gold mr3"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
                 </div>
             </div>
+            <div class="bt b--white-20 mt5 pt4 tc">
+                <p class="f7 white-40">&copy; {% now "Y" %} Comunidad Cristiana de la Villa. Todos los derechos reservados.</p>
+            </div>
         </div>
-        <div class="bt b--white-20 mt5 pt4 tc">
-            <p class="f7 white-40">&copy; {% now "Y" %} Comunidad Cristiana de la Villa. Todos los derechos reservados.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-    <!-- ===== Scripts originales ===== -->
     <script src="{% static 'js/original-scripts.js' %}"></script>
     {% block extra_js %}{% endblock %}
     <script>
-    // Menú hamburguesa para móvil
-    document.querySelector('.btn-toggle-menu')?.addEventListener('click', function() {
-        const menu = document.querySelector('.mobile-menu');
-        menu.classList.toggle('dn');
-    });
-</script>
+        // Menú hamburguesa para móvil
+        document.querySelector('.btn-toggle-menu')?.addEventListener('click', function() {
+            const menu = document.querySelector('.mobile-menu');
+            menu.classList.toggle('dn');
+        });
+    </script>
 </body>
 </html>
