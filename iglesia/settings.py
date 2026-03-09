@@ -1,4 +1,3 @@
-# iglesia/settings.py
 import os
 from pathlib import Path
 
@@ -23,7 +22,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # Apps - TODAS referenciadas con su clase Config
+    # Nuestras apps (SIN MEMBERS)
     "apps.core.apps.CoreConfig",
     "apps.sermons.apps.SermonsConfig",
     "apps.blog.apps.BlogConfig",
@@ -41,7 +40,6 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# ¡IMPORTANTE! apunta a iglesia.urls
 ROOT_URLCONF = "iglesia.urls"
 
 TEMPLATES = [
@@ -95,8 +93,3 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# CONFIGURACIÓN DE LOGIN
-LOGIN_URL = "/miembros/login/"
-LOGIN_REDIRECT_URL = "/miembros/"
-LOGOUT_REDIRECT_URL = "/"
