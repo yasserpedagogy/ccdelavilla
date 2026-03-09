@@ -9,7 +9,11 @@ SECRET_KEY = "django-insecure-tu-clave-secreta-aqui"
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "ccdelavilla.pythonanywhere.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 # APLICACIONES INSTALADAS
 INSTALLED_APPS = [
