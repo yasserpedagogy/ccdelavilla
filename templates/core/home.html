@@ -1,0 +1,60 @@
+<!-- templates/core/home.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero vh-100 flex items-center justify-center relative">
+    <div class="hero-overlay absolute top-0 right-0 bottom-0 left-0"></div>
+    <div class="relative z-2 tc ph4">
+        <!-- Quitamos la clase merriweather -->
+        <h1 class="f2 f1-l white mv0">Comunidad Cristiana de la Villa</h1>
+        <p class="f5 f4-l white-80 mt3 mb4">Viviendo en el poder del evangelio</p>
+        <div>
+            <a href="#main" class="f6 link dim br2 ph3 pv2 dib white bg-gold mr3">Conócenos</a>
+            <a href="{% url 'core:contact' %}" class="f6 link dim br2 ph3 pv2 dib white bg-black-70">Contáctanos</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- Main Content -->
+<main id="main" class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
+    <!-- Church on Sunday -->
+   <section class="tc mb4">
+    <h2 class="merriweather f3 f2-ns">Iglesia el Domingo</h2>
+    <p class="f5 f4-ns measure center lh-copy">Te esperamos todos los domingos a las 10:30 AM y 7:00 PM para celebrar juntos.</p>
+</section>
+
+    <!-- Grid de 4 columnas con Tachyons -->
+    <section class="cf mb5">
+        <<div class="w-100 w-50-m w-25-l fl ph3 tc mb4">
+            <h3 class="merriweather f3">Soy Nuevo</h3>
+            <p class="lh-copy">¿Alguna vez te has sentido fuera de lugar? Aquí perteneces.</p>
+            <a href="#" class="gold link dim">Más información →</a>
+        </div>
+        <<div class="w-100 w-50-m w-25-l fl ph3 tc mb4">
+            <h3 class="merriweather f3">Preguntas</h3>
+            <p class="lh-copy">¿Qué esperar en nuestra iglesia?</p>
+            <a href="#" class="gold link dim">Ver FAQs →</a>
+        </div>
+        <<div class="w-100 w-50-m w-25-l fl ph3 tc mb4">
+            <h3 class="merriweather f3">Ministerios</h3>
+            <p class="lh-copy">¿Quieres más durante la semana?</p>
+            <a href="{% url 'ministries:list' %}" class="gold link dim">Ver ministerios →</a>
+        </div>
+        <div class="fl w-100 w-25-l ph3 tc">
+            <h3 class="merriweather f3">Sermones</h3>
+            <p class="lh-copy">Predicación y enseñanza</p>
+            <a href="{% url 'sermons:list' %}" class="gold link dim">Escuchar →</a>
+        </div>
+    </section>
+
+    <!-- Get In Touch -->
+    <section class="tc bg-light-gray pa5 br2">
+        <h2 class="merriweather f2 f1-ns">¡Contáctanos!</h2>
+        <p class="f4 f3-ns measure center lh-copy mb4">Nos encantaría saber de ti. Escríbenos o visítanos.</p>
+        <a href="{% url 'core:contact' %}" class="f5 link dim br2 ph4 pv3 mb2 dib white bg-gold">Enviar Mensaje</a>
+    </section>
+</main>
+{% endblock %}

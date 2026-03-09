@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} - {{ sermon.title }}{% endblock %}
+
+{% block content %}
+<!-- Hero pequeño con título -->
+<section class="hero-small bg-near-black white pv4">
+    <div class="tc ph4">
+        <h1 class="f3 f2-ns white mv0">{{ sermon.title }}</h1>
+        <p class="f6 f5-ns white-80 mt2">{{ sermon.speaker }} • {{ sermon.date_preached|date:"d M Y" }}</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<main class="ph4 ph5-l pv5" style="max-width: 900px; margin: 0 auto;">
+    
+    <article class="bg-white br2 shadow-4 overflow-hidden">
+        {% if sermon.image %}
+            <img src="{{ sermon.image.url }}" alt="{{ sermon.title }}" class="w-100" style="max-height: 400px; object-fit: cover;">
+        {% endif %}
+        
+        <div class="pa4">
+            {% if sermon.bible_text %}
+                <div class="mb4 pv3 ph4 bg-light-gray br2">
+                    <p class="f5 i mv0">{{ sermon.bible_text }}</p>
+                </div>
+            {% endif %}
+            
+            <div class="lh-copy f5">
+                {{ sermon.description|linebreaks }}
+            </div>
+            
+            <hr class="mv4 b--light-gray">
+            
+            <!-- Recursos multimedia -->
+            <div class="flex flex-wrap">
+                {% if sermon.audio_file %}
+                <div class="w-100 w-50-l pr2 mb3">
+                    <h3 class="f5 mb2">Audio</h3>
+                    <audio controls class="w-100">
+                        <source src="{{ sermon.audio_file.url }}" type="audio/mpeg">
+                        Tu navegador no soporta audio.
+                    </audio>
+                    <a href="{{ sermon.audio_file.url }}" download class="f6 link dim br2 ph3 pv2 dib white bg-gold mt2"><i class="fas fa-download mr2"></i>Descargar</a>
+                </div>
+                {% endif %}
+                
+                {% if sermon.video_url %}
+                <div class="w-100 w-50-l pl3 mb3">
+                    <h3 class="f5 mb2">Video</h3>
+                    <a href="{{ sermon.video_url }}" target="_blank" class="f6 link dim br2 ph4 pv3 dib white bg-black-70"><i class="fas fa-play mr2"></i>Ver en YouTube</a>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="tc mt5">
+                <a href="{% url 'sermons:list' %}" class="f6 link dim br2 ph4 pv3 dib bg-light-gray near-black"><i class="fas fa-arrow-left mr2"></i>Volver a Sermones</a>
+            </div>
+        </div>
+    </article>
+</main>
+{% endblock %}

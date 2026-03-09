@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} - {{ post.title }}{% endblock %}
+
+{% block content %}
+<!-- Hero pequeño con título -->
+<section class="hero-small bg-near-black white pv4">
+    <div class="tc ph4">
+        <h1 class="f3 f2-ns white mv0">{{ post.title }}</h1>
+        <p class="f6 f5-ns white-80 mt2">{{ post.published_date|date:"d M Y" }} • Por {{ post.author.get_full_name|default:post.author.username }}</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<main class="ph4 ph5-l pv5" style="max-width: 800px; margin: 0 auto;">
+    
+    <article class="bg-white br2 shadow-4 overflow-hidden">
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-100" style="max-height: 400px; object-fit: cover;">
+        {% endif %}
+        
+        <div class="pa4">
+            <!-- Contenido del artículo -->
+            <div class="lh-copy f5">
+                {{ post.content|linebreaks }}
+            </div>
+            
+            <hr class="mv4 b--light-gray">
+            
+            <!-- Autor y fecha -->
+            <div class="flex items-center">
+                <div class="mr3">
+                    <i class="fas fa-user-circle fa-3x gold"></i>
+                </div>
+                <div>
+                    <p class="f6 mv0"><strong>{{ post.author.get_full_name|default:post.author.username }}</strong></p>
+                    <p class="f7 mv0 gold">Publicado el {{ post.published_date|date:"d M Y" }}</p>
+                </div>
+            </div>
+            
+            <div class="tc mt5">
+                <a href="{% url 'blog:list' %}" class="f6 link dim br2 ph4 pv3 dib bg-light-gray near-black"><i class="fas fa-arrow-left mr2"></i>Volver al Blog</a>
+            </div>
+        </div>
+    </article>
+</main>
+{% endblock %}

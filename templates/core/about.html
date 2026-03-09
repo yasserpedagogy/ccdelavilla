@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} - Acerca de Nosotros{% endblock %}
+
+{% block content %}
+<!-- Hero pequeño para página interior -->
+<section class="hero-small bg-near-black white pv5">
+    <div class="tc ph4">
+        <h1 class="f2 f1-ns white mv0">Acerca de Nosotros</h1>
+        <p class="f5 f4-ns white-80 mt3">Conoce nuestra historia, visión y valores</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Nuestra Historia -->
+    <section class="mb5">
+        <div class="flex flex-wrap items-center">
+            <div class="w-100 w-50-l pr4-l">
+                <h2 class="merriweather f3 f2-ns">Nuestra Historia</h2>
+                <p class="f5 lh-copy">La Comunidad Cristiana de la Villa nació en 2010 con el sueño de crear una iglesia familiar en el corazón de la comunidad. Lo que comenzó como un pequeño grupo de 15 personas reunidas en una casa, hoy es una comunidad vibrante que impacta a cientos de familias.</p>
+                <p class="f5 lh-copy">A lo largo de estos años, hemos visto cómo Dios ha transformado vidas, restaurado familias y levantado líderes que sirven con pasión. Nuestra historia es un testimonio de la fidelidad de Dios.</p>
+            </div>
+            <div class="w-100 w-50-l mt4 mt0-l">
+                <img src="{% static 'images/historia.jpg' %}" alt="Nuestra Historia" class="w-100 br2 shadow-4">
+            </div>
+        </div>
+    </section>
+
+    <!-- Visión y Misión -->
+    <section class="mb5 pv4 bg-light-gray br2">
+        <div class="flex flex-wrap">
+            <div class="w-100 w-50-l ph4">
+                <h2 class="merriweather f3 tc">Nuestra Visión</h2>
+                <p class="f5 lh-copy tc">Ser una iglesia que transforma vidas a través del amor de Cristo, alcanzando a nuestra ciudad y más allá con el mensaje de esperanza y restauración.</p>
+            </div>
+            <div class="w-100 w-50-l ph4 mt4 mt0-l">
+                <h2 class="merriweather f3 tc">Nuestra Misión</h2>
+                <p class="f5 lh-copy tc">Hacer discípulos que amen a Dios, amen a las personas y sirvan al mundo, desarrollando su máximo potencial en Cristo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestros Pastores -->
+    <section class="mb5">
+        <h2 class="merriweather f3 f2-ns tc mb4">Nuestros Pastores</h2>
+        <div class="flex flex-wrap justify-center">
+            <div class="w-100 w-33-l ph3 tc mb4">
+                <img src="{% static 'images/pastor1.jpg' %}" alt="Pastor Juan Pérez" class="w-50 br-100 shadow-3">
+                <h3 class="f4 mt3 mb1">Pastor Juan Pérez</h3>
+                <p class="gold f6">Pastor Principal</p>
+            </div>
+            <div class="w-100 w-33-l ph3 tc mb4">
+                <img src="{% static 'images/pastor2.jpg' %}" alt="Pastora María García" class="w-50 br-100 shadow-3">
+                <h3 class="f4 mt3 mb1">Pastora María García</h3>
+                <p class="gold f6">Pastora de Familia</p>
+            </div>
+            <div class="w-100 w-33-l ph3 tc mb4">
+                <img src="{% static 'images/pastor3.jpg' %}" alt="Pastor Carlos López" class="w-50 br-100 shadow-3">
+                <h3 class="f4 mt3 mb1">Pastor Carlos López</h3>
+                <p class="gold f6">Pastor de Jóvenes</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestros Valores -->
+    <section class="mb5">
+        <h2 class="merriweather f3 f2-ns tc mb4">Nuestros Valores</h2>
+        <div class="flex flex-wrap">
+            <div class="w-100 w-50-l ph3 mb4">
+                <div class="flex items-start">
+                    <i class="fas fa-heart gold fa-2x mr3"></i>
+                    <div>
+                        <h3 class="f4">Amor</h3>
+                        <p class="f6 lh-copy">Amamos a Dios sobre todas las cosas y al prójimo como a nosotros mismos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100 w-50-l ph3 mb4">
+                <div class="flex items-start">
+                    <i class="fas fa-hand-holding-heart gold fa-2x mr3"></i>
+                    <div>
+                        <h3 class="f4">Servicio</h3>
+                        <p class="f6 lh-copy">Servimos con alegría y generosidad, siguiendo el ejemplo de Jesús.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100 w-50-l ph3 mb4">
+                <div class="flex items-start">
+                    <i class="fas fa-users gold fa-2x mr3"></i>
+                    <div>
+                        <h3 class="f4">Comunidad</h3>
+                        <p class="f6 lh-copy">Vivimos en comunidad, apoyándonos y creciendo juntos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100 w-50-l ph3 mb4">
+                <div class="flex items-start">
+                    <i class="fas fa-bible gold fa-2x mr3"></i>
+                    <div>
+                        <h3 class="f4">Palabra</h3>
+                        <p class="f6 lh-copy">La Biblia es nuestra guía y fundamento para la fe y la conducta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Llamado a la acción -->
+    <section class="tc pa5 bg-gold white br2">
+        <h2 class="merriweather f3 f2-ns">¿Quieres saber más?</h2>
+        <p class="f5 f4-ns measure center lh-copy mb4">Visítanos este domingo o contáctanos para más información.</p>
+        <a href="{% url 'core:contact' %}" class="f5 link dim br2 ph4 pv3 dib white bg-black-70">Contáctanos</a>
+    </section>
+</main>
+{% endblock %}

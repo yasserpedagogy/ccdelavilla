@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} - Blog{% endblock %}
+
+{% block content %}
+<!-- Hero pequeño -->
+<section class="hero-small bg-near-black white pv5">
+    <div class="tc ph4">
+        <h1 class="f2 f1-ns white mv0">Blog</h1>
+        <p class="f5 f4-ns white-80 mt3">Reflexiones y enseñanzas para la vida</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Grid de artículos -->
+    <section class="flex flex-wrap">
+        {% for post in posts %}
+        <article class="w-100 w-50-m w-33-l ph3 mb4">
+            <div class="bg-white br2 shadow-4 overflow-hidden h-100 flex flex-column">
+                <a href="{% url 'blog:detail' post.slug %}" class="db">
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-100" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                        <img src="{% static 'images/default-blog.jpg' %}" alt="Blog" class="w-100" style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                </a>
+                <div class="pa3 flex flex-column flex-auto">
+                    <div class="f7 gold mv2">{{ post.published_date|date:"d M Y" }} • Por {{ post.author.get_full_name|default:post.author.username }}</div>
+                    <h3 class="f4 mv2"><a href="{% url 'blog:detail' post.slug %}" class="link near-black hover-gold">{{ post.title }}</a></h3>
+                    <p class="f6 lh-copy flex-auto">{{ post.excerpt|default:post.content|truncatechars:120 }}</p>
+                    <a href="{% url 'blog:detail' post.slug %}" class="f6 link gold hover-black mt3">Leer más →</a>
+                </div>
+            </div>
+        </article>
+        {% empty %}
+        <p class="tc w-100">No hay artículos publicados aún.</p>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}

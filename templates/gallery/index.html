@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} - Galería{% endblock %}
+
+{% block content %}
+<!-- Hero pequeño -->
+<section class="hero-small bg-near-black white pv5">
+    <div class="tc ph4">
+        <h1 class="f2 f1-ns white mv0">Galería</h1>
+        <p class="f5 f4-ns white-80 mt3">Momentos especiales en comunidad</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Álbumes (opcional) -->
+    {% if albums %}
+    <section class="mb4">
+        <h2 class="merriweather f3 f2-ns mb3">Álbumes</h2>
+        <div class="flex flex-wrap">
+            {% for album in albums %}
+            <div class="w-100 w-50-m w-25-l ph2 mb3">
+                <a href="#" class="db link near-black">
+                    <div class="bg-light-gray br2 overflow-hidden">
+                        <div class="pv4 tc">
+                            <i class="fas fa-folder-open fa-3x gold"></i>
+                        </div>
+                        <div class="pa3 bt b--light-gray">
+                            <h3 class="f5 mv0">{{ album.name }}</h3>
+                            <p class="f7 mv0">{{ album.images.count }} fotos</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+    
+    <!-- Todas las imágenes -->
+    <section>
+        <h2 class="merriweather f3 f2-ns mb3">Todas las Fotos</h2>
+        <div class="flex flex-wrap">
+            {% for image in images %}
+            <div class="w-100 w-50-m w-33-l ph2 mb3">
+                <a href="{{ image.image.url }}" data-lightbox="gallery" data-title="{{ image.title }}" class="db">
+                    <img src="{{ image.image.url }}" alt="{{ image.title }}" class="w-100 br2 shadow-3" style="height: 250px; object-fit: cover;">
+                </a>
+            </div>
+            {% empty %}
+            <p class="tc w-100">No hay imágenes disponibles.</p>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+
+<!-- Lightbox CSS y JS (opcional pero recomendado) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script>
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'albumLabel': 'Imagen %1 de %2'
+    });
+</script>
+{% endblock %}
