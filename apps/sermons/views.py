@@ -4,7 +4,12 @@ from .models import Sermon
 
 def sermon_list(request):
     sermons = Sermon.objects.all()
-    return render(request, "sermons/list.html", {"sermons": sermons})
+    latest_sermon = sermons.first()  # El primer sermón (más reciente)
+    context = {
+        "sermons": sermons,
+        "latest_sermon": latest_sermon,
+    }
+    return render(request, "sermons/list.html", context)
 
 
 def sermon_detail(request, pk):

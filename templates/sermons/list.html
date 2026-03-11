@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block title %} - Sermones{% endblock %}
+{% load sermon_extras %}
 
 {% block content %}
 <!-- Hero pequeño -->
@@ -15,50 +14,105 @@
 <!-- Main Content -->
 <main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
     
-    <!-- Filtros (opcional) -->
-    <section class="mb4 tc">
-        <div class="flex justify-center flex-wrap">
-            <button class="bg-gold white bn ph4 pv2 br2 mr2 mb2">Todos</button>
-            <button class="bg-light-gray near-black bn ph4 pv2 br2 mr2 mb2">2024</button>
-            <button class="bg-light-gray near-black bn ph4 pv2 br2 mr2 mb2">2023</button>
-            <button class="bg-light-gray near-black bn ph4 pv2 br2 mr2 mb2">Series</button>
+    <!-- SECCIÓN 1: ÚLTIMO SERMÓN (DESTACADO) -->
+    {% if latest_sermon %}
+    <section class="mb5">
+        <h2 class="merriweather f3 f2-ns mb4">Último Sermón</h2>
+        <div class="flex flex-wrap bg-light-gray br2 overflow-hidden shadow-4">
+            <!-- Área multimedia (audio o placeholder) -->
+            <div class="w-100 w-60-l bg-black-20 flex items-center justify-center" style="min-height: 300px;">
+                {% if latest_sermon.audio_file %}
+                    <audio controls class="w-80">
+                        <source src="{{ latest_sermon.audio_file.url }}" type="audio/mpeg">
+                        Tu navegador no soporta audio.
+                    </audio>
+                {% else %}
+                    <div class="tc">
+                        <i class="fab fa-youtube fa-4x gold mb3"></i>
+                        <p class="white-80">Video disponible en YouTube</p>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- Información del sermón -->
+            <div class="w-100 w-40-l pa4">
+                <h3 class="f3 f2-ns mv0">{{ latest_sermon.title }}</h3>
+                <p class="gold f5 mt2 mb3">{{ latest_sermon.speaker }} • {{ latest_sermon.date_preached|date:"d M Y" }}</p>
+                {% if latest_sermon.bible_text %}
+                    <p class="f6 i">{{ latest_sermon.bible_text }}</p>
+                {% endif %}
+                <p class="f6 lh-copy">{{ latest_sermon.description|truncatechars:200 }}</p>
+                <div class="mt4 flex flex-wrap" style="position: relative; z-index: 10;">
+    {% if latest_sermon.audio_file %}
+        <a href="{{ latest_sermon.audio_file.url }}" 
+           class="f6 link dim br2 ph4 pv3 dib mr3 mb2" 
+           style="font-weight: 700 !important; background-color: #E0B354; color: white; text-decoration: none; position: relative; z-index: 20;">
+            <i class="fas fa-headphones mr2"></i>Escuchar Audio
+        </a>
+    {% endif %}
+    {% if latest_sermon.video_url %}
+        <a href="{{ latest_sermon.video_url }}" target="_blank" 
+           class="f6 link dim br2 ph4 pv3 dib mr3 mb2" 
+           style="font-weight: 700 !important; background-color: #2d2d2d; color: white; text-decoration: none; position: relative; z-index: 20;">
+            <i class="fab fa-youtube mr2"></i>Ver en YouTube
+        </a>
+    {% endif %}
+</div>
+            </div>
         </div>
     </section>
-
-    <!-- Lista de sermones -->
-    <section class="flex flex-wrap">
-        {% for sermon in sermons %}
-        <article class="w-100 w-50-m w-33-l ph3 mb4">
-            <div class="bg-white br2 shadow-4 overflow-hidden h-100 flex flex-column">
-                <a href="{% url 'sermons:detail' sermon.id %}" class="db">
-                    {% if sermon.image %}
-                        <img src="{{ sermon.image.url }}" alt="{{ sermon.title }}" class="w-100" style="height: 200px; object-fit: cover;">
-                    {% else %}
-                        <img src="{% static 'images/default-sermon.jpg' %}" alt="Sermón" class="w-100" style="height: 200px; object-fit: cover;">
-                    {% endif %}
-                </a>
-                <div class="pa3 flex flex-column flex-auto">
-                    <h3 class="f4 mv0"><a href="{% url 'sermons:detail' sermon.id %}" class="link near-black hover-gold">{{ sermon.title }}</a></h3>
-                    <p class="f6 gold mv2">{{ sermon.speaker }} • {{ sermon.date_preached|date:"d M Y" }}</p>
-                    {% if sermon.bible_text %}
-                        <p class="f7 i mv1">{{ sermon.bible_text }}</p>
-                    {% endif %}
-                    <p class="f6 lh-copy flex-auto">{{ sermon.description|truncatechars:100 }}</p>
-                    <div class="flex items-center justify-between mt3">
-                        {% if sermon.audio_file %}
-                            <a href="{{ sermon.audio_file.url }}" class="f7 link dim br2 ph3 pv2 dib white bg-gold">Audio</a>
-                        {% endif %}
-                        {% if sermon.video_url %}
-                            <a href="{{ sermon.video_url }}" target="_blank" class="f7 link dim br2 ph3 pv2 dib white bg-black-70">Video</a>
-                        {% endif %}
-                        <a href="{% url 'sermons:detail' sermon.id %}" class="f7 link gold hover-black ml-auto">Ver más →</a>
+    {% endif %}
+    
+    <!-- SECCIÓN 2: SERMONES ANTERIORES -->
+    <section>
+        <h2 class="merriweather f3 f2-ns mb4">Todos los Sermones</h2>
+        <div class="flex flex-wrap">
+            {% for sermon in sermons %}
+                {% if sermon != latest_sermon %}
+                <div class="w-100 w-50-m w-33-l ph3 mb4">
+                    <div class="bg-white br2 shadow-4 overflow-hidden h-100 flex flex-column">
+                        <!-- Imagen del sermón -->
+                        <div class="aspect-ratio aspect-ratio--16x9">
+                            {% if sermon.image %}
+                                <img src="{{ sermon.image.url }}" alt="{{ sermon.title }}" class="aspect-ratio--object cover">
+                            {% else %}
+                                <div class="aspect-ratio--object bg-light-gray flex items-center justify-center">
+                                    <i class="fas fa-microphone-alt fa-2x gold"></i>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <!-- Contenido -->
+                        <div class="pa3 flex flex-column flex-auto">
+                            <h3 class="f5 mv0">{{ sermon.title }}</h3>
+                            <p class="f7 gold mv1">{{ sermon.speaker }} • {{ sermon.date_preached|date:"d M Y" }}</p>
+                            {% if sermon.bible_text %}
+                                <p class="f7 i mv1">{{ sermon.bible_text }}</p>
+                            {% endif %}
+                            <p class="f7 lh-copy flex-auto">{{ sermon.description|truncatechars:80 }}</p>
+                           <div class="flex items-center justify-between mt3" style="position: relative; z-index: 10;">
+    {% if sermon.audio_file %}
+        <a href="{{ sermon.audio_file.url }}" 
+           class="f7 link dim br2 ph3 pv2 dib" 
+           style="font-weight: 700 !important; background-color: #E0B354; color: white; text-decoration: none;">
+            Audio
+        </a>
+    {% endif %}
+    {% if sermon.video_url %}
+        <a href="{{ sermon.video_url }}" target="_blank" 
+           class="f7 link dim br2 ph3 pv2 dib" 
+           style="font-weight: 700 !important; background-color: #2d2d2d; color: white; text-decoration: none;">
+            Video
+        </a>
+    {% endif %}
+</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
-        {% empty %}
-        <p class="tc w-100">No hay sermones disponibles próximamente.</p>
-        {% endfor %}
+                {% endif %}
+            {% empty %}
+                <p class="tc w-100">No hay sermones disponibles.</p>
+            {% endfor %}
+        </div>
     </section>
 </main>
 {% endblock %}

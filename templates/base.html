@@ -179,23 +179,38 @@
         {% endblock %}
     </main>
 
-    <footer class="bg-near-black white pv5">
+<footer class="bg-near-black white pv5">
     <div class="ph4 ph5-l" style="max-width: 1200px; margin: 0 auto;">
         <div class="flex flex-wrap">
             <div class="w-100 w-25-l ph3">
                 <h4 class="merriweather f5 ttu tracked gold">Comunidad Cristiana</h4>
                 <p class="f6 white-70 lh-copy">Viviendo en el poder del evangelio</p>
             </div>
+            
+            <!-- SECCIÓN CONTACTO CON WHATSAPP Y EMAIL FUNCIONALES -->
             <div class="w-100 w-25-l ph3">
                 <h4 class="merriweather f5 ttu tracked gold">Contacto</h4>
                 <ul class="list pl0">
-                    <li class="mb2"><i class="fas fa-map-marker-alt gold mr2"></i><span class="f6 white-70">San Antonio 257 e/ Maceo y Máximo Gómez, Guanabacoa, La Habana, Cuba</span></li>
-                    <li class="mb2"><i class="fas fa-phone gold mr2"></i><span class="f6 white-70">+53 59676677</span></li>
-                    <li class="mb2"><i class="fas fa-envelope gold mr2"></i><span class="f6 white-70">c.c.delavilla@gmail.com</span></li>
+                    <li class="mb2 flex items-start">
+                        <i class="fas fa-map-marker-alt gold mr2 mt1"></i>
+                        <span class="f6 white-70">San Antonio 257 e/ Maceo y Máximo Gómez, Guanabacoa, La Habana, Cuba</span>
+                    </li>
+                    <li class="mb2 flex items-center">
+                        <i class="fas fa-phone-alt gold mr2"></i>
+                        <a href="tel:+5359676677" class="f6 white-70 no-underline dim">+53 5967 6677</a>
+                    </li>
+                    <li class="mb2 flex items-center">
+                        <i class="fab fa-whatsapp gold mr2" style="color: #25D366;"></i>
+                        <a href="https://wa.me/5359676677?text=Hola%2C%20quiero%20más%20información%20sobre%20la%20iglesia" target="_blank" class="f6 white-70 no-underline dim">+53 5967 6677 (WhatsApp)</a>
+                    </li>
+                    <li class="mb2 flex items-center">
+                        <i class="fas fa-envelope gold mr2"></i>
+                        <a href="mailto:c.c.delavilla@gmail.com" class="f6 white-70 no-underline dim">c.c.delavilla@gmail.com</a>
+                    </li>
                 </ul>
             </div>
             
-            <!-- SECCIÓN HORARIOS ACTUALIZADA -->
+            <!-- SECCIÓN HORARIOS -->
             <div class="w-100 w-25-l ph3">
                 <h4 class="merriweather f5 ttu tracked gold">Horarios</h4>
                 <ul class="list pl0">
@@ -215,15 +230,19 @@
                 </ul>
             </div>
             
+            <!-- SECCIÓN REDES SOCIALES -->
             <div class="w-100 w-25-l ph3">
                 <h4 class="merriweather f5 ttu tracked gold">Síguenos</h4>
                 <div class="flex">
-                    <a href="https://www.facebook.com/comunidadcristianadelavilla" class="white-70 hover-gold mr3"><i class="fab fa-facebook-f fa-lg"></i></a>
-                    <a href="#" class="white-70 hover-gold mr3"><i class="fab fa-instagram fa-lg"></i></a>
-                    <a href="https://www.youtube.com/@ccdelavilla" class="white-70 hover-gold mr3"><i class="fab fa-youtube fa-lg"></i></a>
+                    <a href="https://www.facebook.com/comunidadcristianadelavilla" target="_blank" class="white-70 hover-gold mr3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                    <a href="#" target="_blank" class="white-70 hover-gold mr3"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="https://www.youtube.com/@ccdelavilla" target="_blank" class="white-70 hover-gold mr3"><i class="fab fa-youtube fa-lg"></i></a>
+                    <a href="https://wa.me/5359676677" target="_blank" class="white-70 hover-gold mr3"><i class="fab fa-whatsapp fa-lg" style="color: #25D366;"></i></a>
                 </div>
             </div>
         </div>
+        
+        <!-- COPYRIGHT -->
         <div class="bt b--white-20 mt5 pt4 tc">
             <p class="f7 white-40">&copy; {% now "Y" %} Comunidad Cristiana de la Villa. Todos los derechos reservados.</p>
         </div>
