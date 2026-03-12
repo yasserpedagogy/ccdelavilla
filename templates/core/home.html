@@ -18,23 +18,22 @@
 <!-- NUEVA SECCIÓN: Video + Bienvenida -->
 <section id="nueva-seccion" class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
     <div class="flex flex-wrap items-center">
-        <!-- Columna izquierda: Video (portrait) -->
-       <!-- Columna izquierda: Video (portrait) con botón play centrado -->
-<div class="w-100 w-50-l pr4-l mb4 mb0-l">
-    <div class="aspect-ratio aspect-ratio--3x4 relative">
-        <!-- Video con z-index bajo -->
-        <video id="miVideo" class="aspect-ratio--object br2 shadow-4" playsinline style="z-index: 1;">
-            <source src="{% static 'videos/video-portrait.mp4' %}" type="video/mp4">
-            Tu navegador no soporta video.
-        </video>
-        <!-- Botón Play con z-index alto -->
-        <button id="btnPlay" class="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center bg-transparent bn pointer" style="z-index: 20;">
-            <div class="bg-gold br-100 flex items-center justify-center shadow-4" style="width: 70px; height: 70px;">
-                <i class="fas fa-play white fa-2x"></i>
+        <!-- Columna izquierda: Video (portrait) SIN BORDES NI SOMBRAS -->
+        <div class="w-100 w-50-l pr4-l mb4 mb0-l">
+            <div class="aspect-ratio aspect-ratio--3x4 relative">
+                <!-- Video sin bordes ni sombras -->
+                <video id="miVideo" class="aspect-ratio--object" playsinline style="z-index: 1;">
+                    <source src="{% static 'videos/video-portrait.mp4' %}" type="video/mp4">
+                    Tu navegador no soporta video.
+                </video>
+                <!-- Botón Play con z-index alto (sin sombra) -->
+                <button id="btnPlay" class="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center bg-transparent bn pointer" style="z-index: 20;">
+                    <div class="bg-gold br-100 flex items-center justify-center" style="width: 70px; height: 70px;">
+                        <i class="fas fa-play white fa-2x"></i>
+                    </div>
+                </button>
             </div>
-        </button>
-    </div>
-</div>
+        </div>
         
         <!-- Columna derecha: Texto de bienvenida -->
         <div class="w-100 w-50-l pl4-l tc tl-l">
@@ -44,8 +43,6 @@
             </div>
         </div>
     </div>
-
-
 </section>
 
 <!-- Main Content -->
@@ -78,15 +75,40 @@
         <div class="w-100 w-50-m w-25-l fl ph3 tc">
             <h3 class="merriweather f3">Sermones</h3>
             <p class="lh-copy">Predicación y enseñanza</p>
-            <a href="{% url 'sermons:list' %}" class="gold link dim fw6">Escuchar →</a>
+            <a href="{% url 'sermons:list' %}" class="gold link dim fw6">Ver sermones →</a>
         </div>
     </section>
 
-    <!-- Get In Touch - MODIFICADO: menos padding y botón en negrita -->
+    <!-- Get In Touch -->
     <section class="tc bg-light-gray pa4 br2">
         <h2 class="merriweather f2 f1-ns">¡Contáctanos!</h2>
         <p class="f4 f3-ns measure center lh-copy mb4">Nos encantaría saber de ti. Escríbenos o visítanos.</p>
         <a href="{% url 'core:contact' %}" class="f5 link dim br2 ph4 pv3 mb2 dib white bg-gold" style="font-weight: 700 !important; font-weight: bold !important;">Enviar Mensaje</a>
     </section>
 </main>
+
+<script>
+    // Menú hamburguesa para móvil
+    document.querySelector('.btn-toggle-menu')?.addEventListener('click', function() {
+        const menu = document.querySelector('.mobile-menu');
+        menu.classList.toggle('dn');
+    });
+
+    // Control del video
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('miVideo');
+        const btnPlay = document.getElementById('btnPlay');
+        
+        if (video && btnPlay) {
+            btnPlay.addEventListener('click', function() {
+                video.play();
+                btnPlay.style.display = 'none';
+            });
+            
+            video.addEventListener('ended', function() {
+                btnPlay.style.display = 'flex';
+            });
+        }
+    });
+</script>
 {% endblock %}
