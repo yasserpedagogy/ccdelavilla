@@ -10,7 +10,7 @@
         <p class="f5 f4-l white-80 mt3 mb4">Viviendo en el poder del evangelio</p>
         <div>
             <a href="{% url 'core:about' %}" class="f6 link dim br2 ph3 pv2 dib white bg-gold mr3" style="font-weight: 700 !important;">Conócenos</a>
-<a href="{% url 'core:contact' %}" class="f6 link dim br2 ph3 pv2 dib mr3" style="background-color: #E0B354; color: #ffffff !important; font-weight: 700 !important;">Contáctanos</a>
+            <a href="{% url 'core:contact' %}" class="f6 link dim br2 ph3 pv2 dib mr3" style="background-color: #E0B354; color: #ffffff !important; font-weight: 700 !important;">Contáctanos</a>
         </div>
     </div>
 </section>
@@ -18,20 +18,15 @@
 <!-- NUEVA SECCIÓN: Video + Bienvenida -->
 <section id="nueva-seccion" class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
     <div class="flex flex-wrap items-center">
-        <!-- Columna izquierda: Video (portrait) SIN BORDES NI SOMBRAS -->
+        <!-- Columna izquierda: Video (portrait) SIN BOTÓN -->
         <div class="w-100 w-50-l pr4-l mb4 mb0-l">
             <div class="aspect-ratio aspect-ratio--3x4 relative">
-                <!-- Video sin bordes ni sombras -->
-                <video id="miVideo" class="aspect-ratio--object" playsinline style="z-index: 1;">
+                <!-- Video clickeable (sin bordes ni sombras) -->
+                <video id="miVideo" class="aspect-ratio--object pointer" playsinline style="z-index: 1; cursor: pointer;">
                     <source src="{% static 'videos/video-portrait.mp4' %}" type="video/mp4">
                     Tu navegador no soporta video.
                 </video>
-                <!-- Botón Play con z-index alto (sin sombra) -->
-                <button id="btnPlay" class="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center bg-transparent bn pointer" style="z-index: 20;">
-                    <div class="bg-gold br-100 flex items-center justify-center" style="width: 70px; height: 70px;">
-                        <i class="fas fa-play white fa-2x"></i>
-                    </div>
-                </button>
+                <!-- El botón ha sido ELIMINADO -->
             </div>
         </div>
         
@@ -39,7 +34,7 @@
         <div class="w-100 w-50-l pl4-l tc tl-l">
             <h2 class="f1 f-headline-l gold mv0 lh-solid">Bienvenido<br>a Casa</h2>
             <div class="mt4">
-                <a href="{% url 'core:about' %}" class="f3 link dim br2 ph4 pv3 dib white bg-gold" style="font-weight: 700 !important; font-weight: bold !important;">Conoce más →</a>
+                <a href="{% url 'core:about' %}" class="f3 link dim br2 ph4 pv3 dib white bg-gold" style="font-weight: 700 !important;">Conoce más →</a>
             </div>
         </div>
     </div>
@@ -83,7 +78,7 @@
     <section class="tc bg-light-gray pa4 br2">
         <h2 class="merriweather f2 f1-ns">¡Contáctanos!</h2>
         <p class="f4 f3-ns measure center lh-copy mb4">Nos encantaría saber de ti. Escríbenos o visítanos.</p>
-        <a href="{% url 'core:contact' %}" class="f5 link dim br2 ph4 pv3 mb2 dib white bg-gold" style="font-weight: 700 !important; font-weight: bold !important;">Enviar Mensaje</a>
+        <a href="{% url 'core:contact' %}" class="f5 link dim br2 ph4 pv3 mb2 dib white bg-gold" style="font-weight: 700 !important;">Enviar Mensaje</a>
     </section>
 </main>
 
@@ -94,19 +89,21 @@
         menu.classList.toggle('dn');
     });
 
-    // Control del video
+    // Control del video: clic = play/pause
     document.addEventListener('DOMContentLoaded', function() {
         const video = document.getElementById('miVideo');
-        const btnPlay = document.getElementById('btnPlay');
         
-        if (video && btnPlay) {
-            btnPlay.addEventListener('click', function() {
-                video.play();
-                btnPlay.style.display = 'none';
-            });
+        if (video) {
+            // Agregar cursor pointer al video
+            video.classList.add('pointer');
             
-            video.addEventListener('ended', function() {
-                btnPlay.style.display = 'flex';
+            // Evento de clic: si está reproduciendo, pausa; si está pausado, reproduce
+            video.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
             });
         }
     });
