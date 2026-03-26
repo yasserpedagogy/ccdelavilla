@@ -15,72 +15,124 @@
 <!-- Main Content -->
 <main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
     
-    <!-- Nuestra Historia -->
-    <section class="mb5">
-        <div class="flex flex-wrap items-center">
-            <div class="w-100 w-50-l pr4-l">
-                <h2 class="merriweather f3 f2-ns">Nuestra Historia</h2>
-                <p class="f5 lh-copy">La Comunidad Cristiana de la Villa nació en 2010 con el sueño de crear una iglesia familiar en el corazón de la comunidad. Lo que comenzó como un pequeño grupo de 15 personas reunidas en una casa, hoy es una comunidad vibrante que impacta a cientos de familias.</p>
-                <p class="f5 lh-copy">A lo largo de estos años, hemos visto cómo Dios ha transformado vidas, restaurado familias y levantado líderes que sirven con pasión. Nuestra historia es un testimonio de la fidelidad de Dios.</p>
+  <!-- Nuestra Historia -->
+<section class="mb5">
+    <div class="flex flex-wrap items-center">
+        <div class="w-100 w-50-l pr4-l">
+            <h2 class="merriweather f3 f2-ns">Nuestra Historia</h2>
+            <p class="f5 lh-copy" id="historiaIntro">
+                Nuestra iglesia surgió en medio del Covid-19. Todo comenzó cuando un grupo de tres amigos, nos vimos en la necesidad de ayudarnos mutuamente para sobrevivir en medio de la pandemia, en la Cuba del 2020. No hubo nada planificado, sino que la misma dinámica de la vida nos llevó a tener esta suerte de unión fraternal que terminó con la fundación de lo que hoy es nuestra Iglesia Comunitaria de la Villa de Guanabacoa, en La Habana.
+            </p>
+            
+            <!-- Texto completo de la historia (oculto inicialmente) -->
+            <div id="historiaCompleta" class="dn">
+                <p class="f5 lh-copy mt3">
+                    <!-- AQUÍ PEGA EL RESTO DE LA HISTORIA QUE TE DIO EL CLIENTE EN EL PDF -->
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <div class="mt3">
+                    <a href="{% static 'docs/historia-completa.pdf' %}" target="_blank" class="f6 link dim br2 ph3 pv2 dib white bg-gold" style="font-weight: 700 !important;">
+                        <i class="fas fa-download mr2"></i>Descargar historia completa (PDF)
+                    </a>
+                </div>
             </div>
-            <div class="w-100 w-50-l mt4 mt0-l">
-                <img src="{% static 'images/historia.jpg' %}" alt="Nuestra Historia" class="w-100 br2 shadow-4">
+            
+            <!-- Botones -->
+            <div class="mt3 flex flex-wrap">
+                <button id="btnLeerMas" class="f6 link dim br2 ph3 pv2 dib white bg-gold mr3 mb2" style="font-weight: 700 !important; border: none; cursor: pointer;">
+                    <i class="fas fa-book-open mr2"></i>Leer más
+                </button>
+                <a href="{% static 'docs/historia-completa.pdf' %}" target="_blank" class="f6 link dim br2 ph3 pv2 dib bg-black mb2" style="font-weight: 700 !important; color: #ffffff !important;">
+    <i class="fas fa-file-pdf mr2"></i>Ver historia completa (PDF)
+</a>
             </div>
         </div>
-    </section>
+        
+        <!-- Columna derecha: VIDEO en lugar de imagen -->
+        <div class="w-100 w-50-l mt4 mt0-l">
+            <div class="aspect-ratio aspect-ratio--16x9">
+                <video class="aspect-ratio--object br2 shadow-4" controls poster="{% static 'images/historia-poster.jpg' %}">
+                    <source src="{% static 'videos/historia.mp4' %}" type="video/mp4">
+                    Tu navegador no soporta video.
+                </video>
+            </div>
+            <p class="f7 gray tc mt2">Nuestra historia en imágenes</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    // JavaScript para el botón "Leer más"
+    document.addEventListener('DOMContentLoaded', function() {
+        const btn = document.getElementById('btnLeerMas');
+        const historiaCompleta = document.getElementById('historiaCompleta');
+        
+        if (btn && historiaCompleta) {
+            btn.addEventListener('click', function() {
+                if (historiaCompleta.classList.contains('dn')) {
+                    historiaCompleta.classList.remove('dn');
+                    btn.innerHTML = '<i class="fas fa-compress mr2"></i>Mostrar menos';
+                } else {
+                    historiaCompleta.classList.add('dn');
+                    btn.innerHTML = '<i class="fas fa-book-open mr2"></i>Leer más';
+                }
+            });
+        }
+    });
+</script>
 
     <!-- Visión y Misión -->
     <section class="mb5 pv4 bg-light-gray br2">
         <div class="flex flex-wrap">
             <div class="w-100 w-50-l ph4">
                 <h2 class="merriweather f3 tc">Nuestra Visión</h2>
-                <p class="f5 lh-copy tc">Ser una iglesia que transforma vidas a través del amor de Cristo, alcanzando a nuestra ciudad y más allá con el mensaje de esperanza y restauración.</p>
+                <p class="f5 lh-copy tc">La Comunidad Cristiana de la Villa existe para ayudar a construir una gran ciudad para todas las personas de Guanabacoa a través de un movimiento del evangelio que trae conversión personal, formación comunitaria, justicia social y renovación cultural.</p>
             </div>
             <div class="w-100 w-50-l ph4 mt4 mt0-l">
                 <h2 class="merriweather f3 tc">Nuestra Misión</h2>
-                <p class="f5 lh-copy tc">Hacer discípulos que amen a Dios, amen a las personas y sirvan al mundo, desarrollando su máximo potencial en Cristo.</p>
+                <p class="f5 lh-copy tc">Amar a nuestro Dios y al prójimo asociándonos con otros para crear una ciudad próspera y un buen lugar para que todos vivamos (Jeremías 29:79).</p>
             </div>
         </div>
     </section>
 
-    <!-- NUEVA SECCIÓN: Nuestras Creencias (reemplaza a Valores) -->
+    <!-- NUEVA SECCIÓN: Nuestros Valores -->
     <section class="mb5">
-        <h2 class="merriweather f3 f2-ns tc mb4">Nuestras Creencias</h2>
+        <h2 class="merriweather f3 f2-ns tc mb4">Nuestros Valores</h2>
         <div class="bg-white br2 shadow-4 pa5">
             <ul class="list pl0">
                 <li class="mb4 flex">
                     <span class="gold f2 mr3">•</span>
                     <div>
-                        <h3 class="f4 mv0">La Biblia</h3>
-                        <p class="f5 lh-copy mv2 gray">Creemos que la Biblia es la Palabra inspirada de Dios, nuestra guía infalible para la fe y la conducta.</p>
+                        <h3 class="f4 mv0">Conversión personal</h3>
+                        <p class="f5 lh-copy mv2 gray">Conectamos a las personas con Dios a través del evangelismo, la adoración y el discipulado, ya que toda la vida se convierte y cambia por el evangelio.</p>
                     </div>
                 </li>
                 <li class="mb4 flex">
                     <span class="gold f2 mr3">•</span>
                     <div>
-                        <h3 class="f4 mv0">La Trinidad</h3>
-                        <p class="f5 lh-copy mv2 gray">Creemos en un solo Dios que existe eternamente en tres personas: Padre, Hijo y Espíritu Santo.</p>
+                        <h3 class="f4 mv0">Formación comunitaria</h3>
+                        <p class="f5 lh-copy mv2 gray">Conectamos a las personas entre sí a través de la adoración, el compañerismo del grupo comunitario, el intercambio de recursos, el fortalecimiento de las familias, además de ser una contracultura con respecto al sexo, el dinero y el poder.</p>
                     </div>
                 </li>
                 <li class="mb4 flex">
                     <span class="gold f2 mr3">•</span>
                     <div>
-                        <h3 class="f4 mv0">La Salvación</h3>
-                        <p class="f5 lh-copy mv2 gray">Creemos que la salvación es por gracia mediante la fe en Jesucristo, no por obras, sino como un regalo de Dios.</p>
+                        <h3 class="f4 mv0">Justicia social</h3>
+                        <p class="f5 lh-copy mv2 gray">Conectamos a las personas con los pobres y marginados a través de ministerios de justicia y compasión y con toda la ciudad a través de la participación cívica de nuestra gente.</p>
                     </div>
                 </li>
                 <li class="mb4 flex">
                     <span class="gold f2 mr3">•</span>
                     <div>
-                        <h3 class="f4 mv0">La Iglesia</h3>
-                        <p class="f5 lh-copy mv2 gray">Creemos en la iglesia como el cuerpo de Cristo, una familia de creyentes llamados a adorar, crecer y servir.</p>
+                        <h3 class="f4 mv0">Renovación cultural</h3>
+                        <p class="f5 lh-copy mv2 gray">Conectamos a las personas con la cultura, particularmente a través de la integración de la fe con el trabajo y la vocación.</p>
                     </div>
                 </li>
                 <li class="flex">
                     <span class="gold f2 mr3">•</span>
                     <div>
-                        <h3 class="f4 mv0">El Bautismo</h3>
-                        <p class="f5 lh-copy mv2 gray">Creemos en el bautismo por inmersión como una declaración pública de fe y un paso de obediencia.</p>
+                        <h3 class="f4 mv0">Movimiento</h3>
+                        <p class="f5 lh-copy mv2 gray">Plantamos iglesias en lugares (ciudades, municipios o barrios) que comparten estos valores fundamentales. El término movimiento aquí se refiere a la proliferación de iglesias, ministerios, instituciones, empresas e iniciativas, basadas en el evangelio en toda la ciudad.</p>
                     </div>
                 </li>
             </ul>
@@ -95,22 +147,14 @@
     <div class="mb5">
         <h3 class="merriweather f4 f3-ns gold tc mb4">Pastores</h3>
         <div class="flex flex-wrap justify-center">
-        <div class="w-100 w-33-l ph3 tc mb4">
-                <img src="{% static 'images/tomas.jpg' %}" alt="Pastora María García" class="w-50 br-100 shadow-3">
-                <h4 class="f5 mt3 mb1">María García</h4>
-                <p class="f7 gray mv0">Pastora de Familia</p>
-            </div>
+        
             <div class="w-100 w-33-l ph3 tc mb4">
                 <img src="{% static 'images/ulises1.jpg' %}" alt="Ulises V. Ziegenhirt" class="w-50 br-100 shadow-3">
                 <h4 class="f5 mt3 mb1">Ulises V. Ziegenhirt</h4>
                 <p class="f7 gray mv0">Pastor Principal</p>
             </div>
             
-            <div class="w-100 w-33-l ph3 tc mb4">
-                <img src="{% static 'images/tomas.jpg' %}" alt="Pastor Carlos López" class="w-50 br-100 shadow-3">
-                <h4 class="f5 mt3 mb1">Carlos López</h4>
-                <p class="f7 gray mv0">Pastor de Jóvenes</p>
-            </div>
+            
         </div>
     </div>
     
@@ -129,7 +173,7 @@
                 <p class="f7 gray mv0">Líder de Jóvenes</p>
             </div>
             <div class="w-100 w-33-l ph3 tc mb4">
-                <img src="{% static 'images/tomas.jpg' %}" alt="Leonardo Cuba Medina" class="w-50 br-100 shadow-3">
+                <img src="{% static 'images/leonardo1.jpg' %}" alt="Leonardo Cuba Medina" class="w-50 br-100 shadow-3">
                 <h4 class="f5 mt3 mb1">Leonardo Cuba Medina</h4>
                 <p class="f7 gray mv0">Líder de Niños</p>
             </div>
@@ -141,20 +185,16 @@
         <h3 class="merriweather f4 f3-ns gold tc mb4">Diáconos</h3>
         <div class="flex flex-wrap justify-center">
             <div class="w-100 w-33-l ph3 tc mb4">
-                <img src="{% static 'images/cintra1.jpg' %}" alt="Diksan Cintra Santos" class="w-50 br-100 shadow-3">
+                <img src="{% static 'images/cintra21.jpg' %}" alt="Diksan Cintra Santos" class="w-50 br-100 shadow-3">
                 <h4 class="f5 mt3 mb1">Diksan Cintra Santos</h4>
                 <p class="f7 gray mv0">Diácono</p>
             </div>
             <div class="w-100 w-33-l ph3 tc mb4">
-                <img src="{% static 'images/tomas.jpg' %}" alt="Maritza Ávila Crespo" class="w-50 br-100 shadow-3">
+                <img src="{% static 'images/maritza1.jpg' %}" alt="Maritza Ávila Crespo" class="w-50 br-100 shadow-3">
                 <h4 class="f5 mt3 mb1">Maritza Ávila Crespo</h4>
                 <p class="f7 gray mv0">Diácona</p>
             </div>
-            <div class="w-100 w-33-l ph3 tc mb4">
-                <img src="{% static 'images/tomas.jpg' %}" alt="Roberto Castro" class="w-50 br-100 shadow-3">
-                <h4 class="f5 mt3 mb1">Roberto Castro</h4>
-                <p class="f7 gray mv0">Diácono</p>
-            </div>
+           
         </div>
     </div>
 </section>
