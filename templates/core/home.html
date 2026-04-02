@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<!-- Hero Section (se mantiene IGUAL) -->
+<!-- Hero Section -->
 <section class="hero vh-100 flex items-center justify-center relative">
     <div class="hero-overlay absolute top-0 right-0 bottom-0 left-0"></div>
     <div class="relative z-2 tc ph4">
@@ -15,22 +15,17 @@
     </div>
 </section>
 
-<!-- NUEVA SECCIÓN: Video + Bienvenida -->
+<!-- Sección Video + Bienvenida -->
 <section id="nueva-seccion" class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
     <div class="flex flex-wrap items-center">
-        <!-- Columna izquierda: Video (portrait) SIN BOTÓN -->
         <div class="w-100 w-50-l pr4-l mb4 mb0-l">
             <div class="aspect-ratio aspect-ratio--3x4 relative">
-                <!-- Video clickeable (sin bordes ni sombras) -->
                 <video id="miVideo" class="aspect-ratio--object pointer" playsinline style="z-index: 1; cursor: pointer;">
                     <source src="{% static 'videos/video-portrait.mp4' %}" type="video/mp4">
                     Tu navegador no soporta video.
                 </video>
-                <!-- El botón ha sido ELIMINADO -->
             </div>
         </div>
-        
-        <!-- Columna derecha: Texto de bienvenida -->
         <div class="w-100 w-50-l pl4-l tc tl-l">
             <h2 class="f1 f-headline-l gold mv0 lh-solid">Bienvenido<br>a Casa</h2>
             <div class="mt4">
@@ -43,30 +38,23 @@
 <!-- Main Content -->
 <main class="ph4 ph5-l pv5" style="max-width: 1200px; margin: 0 auto;">
     
-    <!-- Grid de 4 columnas con Tachyons -->
+    <!-- Grid de 4 columnas -->
     <section class="cf mb5">
-        <!-- Columna 1: Acerca de -->
         <div class="w-100 w-50-m w-25-l fl ph3 tc mb4">
             <h3 class="merriweather f3">Acerca de</h3>
             <p class="lh-copy">¿Alguna vez te has sentido fuera de lugar? Aquí perteneces.</p>
             <a href="{% url 'core:about' %}" class="gold link dim fw6">Más información →</a>
         </div>
-        
-        <!-- Columna 2: Artículos (Blog) -->
         <div class="w-100 w-50-m w-25-l fl ph3 tc mb4">
             <h3 class="merriweather f3">Artículos</h3>
             <p class="lh-copy">Devocionales, doctrina y reflexiones para tu vida.</p>
             <a href="{% url 'blog:list' %}" class="gold link dim fw6">Leer blog →</a>
         </div>
-        
-        <!-- Columna 3: Ministerios -->
         <div class="w-100 w-50-m w-25-l fl ph3 tc mb4">
             <h3 class="merriweather f3">Ministerios</h3>
             <p class="lh-copy">¿Quieres más durante la semana?</p>
             <a href="{% url 'ministries:list' %}" class="gold link dim fw6">Ver ministerios →</a>
         </div>
-        
-        <!-- Columna 4: Sermones -->
         <div class="w-100 w-50-m w-25-l fl ph3 tc">
             <h3 class="merriweather f3">Sermones</h3>
             <p class="lh-copy">Predicación y enseñanza</p>
@@ -81,4 +69,21 @@
         <a href="{% url 'core:contact' %}" class="f5 link dim br2 ph4 pv3 mb2 dib white bg-gold" style="font-weight: 700 !important;">Enviar Mensaje</a>
     </section>
 </main>
+
+<script>
+    // Control del video: clic = play/pause
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('miVideo');
+        
+        if (video) {
+            video.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }
+    });
+</script>
 {% endblock %}
