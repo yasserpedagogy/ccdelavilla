@@ -14,7 +14,8 @@ def home(request):
     meta = Meta(
         title="Comunidad Cristiana de la Villa",
         description="Una familia con propósito. Te esperamos para vivir juntos la plenitud del evangelio.",
-        image="https://ccdelavilla.pythonanywhere.com/static/images/hero-bg.jpg",
+        # image="https://ccdelavilla.pythonanywhere.com/static/images/hero-bg.jpg",
+        image="https://developers.facebook.com/docs/sharing/best-practices/images/preview-image.jpg",
         url=request.build_absolute_uri(),
     )
 
