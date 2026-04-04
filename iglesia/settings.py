@@ -12,6 +12,7 @@ ALLOWED_HOSTS = [
     "ccdelavilla.pythonanywhere.com",
     "localhost",
     "127.0.0.1",
+    ".onrender.com",
 ]
 
 # APLICACIONES INSTALADAS
