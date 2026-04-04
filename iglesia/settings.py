@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "apps.ministries.apps.MinistriesConfig",
     "apps.gallery.apps.GalleryConfig",
     "meta",
+    "fullurl",
 ]
 
 MIDDLEWARE = [
