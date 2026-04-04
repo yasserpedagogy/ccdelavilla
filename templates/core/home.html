@@ -1,6 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ccdelavilla.pythonanywhere.com/">
+<meta property="og:title" content="Comunidad Cristiana de la Villa">
+<meta property="og:description" content="Una familia con propósito. Te esperamos para vivir juntos la plenitud del evangelio.">
+<meta property="og:image" content="https://ccdelavilla.pythonanywhere.com/static/images/hero-bg.jpg">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://ccdelavilla.pythonanywhere.com/">
+<meta name="twitter:title" content="Comunidad Cristiana de la Villa">
+<meta name="twitter:description" content="Una familia con propósito. Te esperamos para vivir juntos la plenitud del evangelio.">
+<meta name="twitter:image" content="https://ccdelavilla.pythonanywhere.com/static/images/hero-bg.jpg">
+{% endblock %}
+
+
+
 {% block content %}
 <!-- Hero Section -->
 <section class="hero vh-100 flex items-center justify-center relative">
