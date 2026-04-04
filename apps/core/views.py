@@ -17,7 +17,7 @@ def home(request):
         "meta": {
             "title": "Comunidad Cristiana de la Villa",
             "description": "Una familia con propósito. Te esperamos para vivir juntos la plenitud del evangelio.",
-            "image": "https://ccdelavilla.pythonanywhere.com/static/images/hero-bg.jpg",
+            "image": "https://ccdelavilla.pythonanywhere.com/static/images/logo.jpg",
         },
     }
     return render(request, "core/home.html", context)
