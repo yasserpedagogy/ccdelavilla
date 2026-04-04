@@ -98,3 +98,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CONFIGURACIÓN DE EMAIL PARA DESARROLLO (SOLO PRUEBAS)
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# Configuración para django-meta
+META_SITE_PROTOCOL = "https"
+META_SITE_DOMAIN = "ccdelavilla.pythonanywhere.com"
+META_USE_OG_PROPERTIES = True
+META_USE_TWITTER_PROPERTIES = True

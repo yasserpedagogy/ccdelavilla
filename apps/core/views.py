@@ -10,20 +10,15 @@ def home(request):
     from apps.blog.models import Post
     from apps.ministries.models import Ministry
 
-    # Metadatos para la vista previa al compartir
-    meta = Meta(
-        title="Comunidad Cristiana de la Villa",
-        description="Una familia con propósito. Te esperamos para vivir juntos la plenitud del evangelio.",
-        # image="https://ccdelavilla.pythonanywhere.com/static/images/hero-bg.jpg",
-        image="https://developers.facebook.com/docs/sharing/best-practices/images/preview-image.jpg",
-        url=request.build_absolute_uri(),
-    )
-
     context = {
         "latest_sermons": Sermon.objects.all()[:3],
         "latest_posts": Post.objects.all()[:3],
         "ministries": Ministry.objects.all()[:4],
-        "meta": meta,
+        "meta": {
+            "title": "Comunidad Cristiana de la Villa",
+            "description": "Una familia con propósito. Te esperamos para vivir juntos la plenitud del evangelio.",
+            "image": "https://ccdelavilla.pythonanywhere.com/static/images/hero-bg.jpg",
+        },
     }
     return render(request, "core/home.html", context)
 
