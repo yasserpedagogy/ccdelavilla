@@ -33,8 +33,10 @@ INSTALLED_APPS = [
     "fullurl",
 ]
 
+# MIDDLEWARE - CON WHITENOISE (el orden es importante)
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # <-- AÑADIDA (después de SecurityMiddleware)
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -91,6 +93,9 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# CONFIGURACIÓN DE WHITENOISE PARA ARCHIVOS ESTÁTICOS EN PRODUCCIÓN
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
