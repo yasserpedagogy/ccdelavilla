@@ -17,46 +17,35 @@
     
     <!-- Nuestra Historia -->
     <section class="mb5">
-        <div class="flex flex-wrap items-center">
-            <div class="w-100 w-50-l pr4-l">
-                <h2 class="merriweather f3 f2-ns">Nuestra Historia</h2>
-                <p class="f5 lh-copy" id="historiaIntro">
-                    Nuestra iglesia surgió en medio del Covid-19. Todo comenzó cuando un grupo de tres amigos, nos vimos en la necesidad de ayudarnos mutuamente para sobrevivir en medio de la pandemia, en la Cuba del 2020. No hubo nada planificado, sino que la misma dinámica de la vida nos llevó a tener esta suerte de unión fraternal que terminó con la fundación de lo que hoy es nuestra Iglesia Comunitaria de la Villa de Guanabacoa, en La Habana.
+    <div class="flex flex-wrap">
+        <div class="w-100">
+            <h2 class="merriweather f3 f2-ns">Nuestra Historia</h2>
+            <p class="f5 lh-copy" id="historiaIntro">
+                Nuestra iglesia surgió en medio del Covid-19. Todo comenzó cuando un grupo de tres amigos, nos vimos en la necesidad de ayudarnos mutuamente para sobrevivir en medio de la pandemia, en la Cuba del 2020. No hubo nada planificado, sino que la misma dinámica de la vida nos llevó a tener esta suerte de unión fraternal que terminó con la fundación de lo que hoy es nuestra Iglesia Comunitaria de la Villa de Guanabacoa, en La Habana.
+            </p>
+            
+            <!-- Texto completo de la historia (oculto inicialmente) -->
+            <div id="historiaCompleta" class="dn">
+                <p class="f5 lh-copy mt3">                        
+                    Desde 2023 compartimos desayunos y almuerzos con personas vulnerables. Además de esto, les ofrecemos una atención integral que incluye ropa, medicinas y acompañamiento espiritual. En nuestra iglesia funciona un centro de capacitación para líderes comunitarios donde formamos y equipamos líderes que atiendan estas necesidades siempre crecientes de nuestra población.
                 </p>
-                
-                <!-- Texto completo de la historia (oculto inicialmente) -->
-                <div id="historiaCompleta" class="dn">
-                    <p class="f5 lh-copy mt3">                        
-                        Desde 2023 compartimos desayunos y almuerzos con personas vulnerables. Además de esto, les ofrecemos una atención integral que incluye ropa, medicinas y acompañamiento espiritual. En nuestra iglesia funciona un centro de capacitación para líderes comunitarios donde formamos y equipamos líderes que atiendan estas necesidades siempre crecientes de nuestra población.
-                    </p>
-                    <p class="f5 lh-copy mt3">                        
-                        Anhelamos ver más comunidades de fe enfocadas en el cuidado de los más débiles, la preservación del medio ambiente y la proclamación de la buena noticia de Jesús. Nuestro país y nuestro planeta no tienen otra alternativa más eficaz y sostenible que esta: recibir el Reino de Dios y vivir para el bien de nuestros prójimos para que juntos veamos a Cuba florecer para la gloria de Dios.
-                    </p>
-                </div>
-                
-                <!-- Botones: solo el de "Ver PDF" aparece siempre, y el "Leer más" -->
-                <div class="mt3 flex flex-wrap">
-                    <button id="btnLeerMas" class="f6 link dim br2 ph3 pv2 dib white bg-gold mr3 mb2" style="font-weight: 700 !important; border: none; cursor: pointer;">
-                        <i class="fas fa-book-open mr2"></i>Leer más
-                    </button>
-                    <a href="{% static 'docs/historia-completa.pdf' %}" target="_blank" class="f6 link dim br2 ph3 pv2 dib bg-black mb2" style="font-weight: 700 !important; color: #ffffff !important;">
-                        <i class="fas fa-file-pdf mr2"></i>Ver historia completa (PDF)
-                    </a>
-                </div>
+                <p class="f5 lh-copy mt3">                        
+                    Anhelamos ver más comunidades de fe enfocadas en el cuidado de los más débiles, la preservación del medio ambiente y la proclamación de la buena noticia de Jesús. Nuestro país y nuestro planeta no tienen otra alternativa más eficaz y sostenible que esta: recibir el Reino de Dios y vivir para el bien de nuestros prójimos para que juntos veamos a Cuba florecer para la gloria de Dios.
+                </p>
             </div>
             
-            <!-- Columna derecha: VIDEO 
-            <div class="w-100 w-50-l mt4 mt0-l">
-                <div class="aspect-ratio aspect-ratio--16x9">
-                    <video class="aspect-ratio--object br2 shadow-4" controls poster="{% static 'images/historia-poster.jpg' %}">
-                        <source src="{% static 'videos/historia.mp4' %}" type="video/mp4">
-                        Tu navegador no soporta video.
-                    </video>
-                </div>
-                <p class="f7 gray tc mt2">Nuestra historia en imágenes</p>
-            </div> -->
+            <!-- Botones -->
+            <div class="mt3 flex flex-wrap">
+                <button id="btnLeerMas" class="f6 link dim br2 ph3 pv2 dib white bg-gold mr3 mb2" style="font-weight: 700 !important; border: none; cursor: pointer;">
+                    <i class="fas fa-book-open mr2"></i>Leer más
+                </button>
+                <a href="{% static 'docs/historia-completa.pdf' %}" target="_blank" class="f6 link dim br2 ph3 pv2 dib bg-black mb2" style="font-weight: 700 !important; color: #ffffff !important;">
+                    <i class="fas fa-file-pdf mr2"></i>Ver historia completa (PDF)
+                </a>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <script>
         // JavaScript para el botón "Leer más"

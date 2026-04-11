@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ContactMessage
+from .models import ContactMessage, HeroConfig
 from django.utils.html import format_html
 
 
@@ -25,3 +25,23 @@ class ContactMessageAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request):
         return False  # No permitir crear mensajes manualmente
+
+
+@admin.register(HeroConfig)
+class HeroConfigAdmin(admin.ModelAdmin):
+    list_display = ["id", "updated_at"]
+    fieldsets = (
+        (
+            "Hero de la página de inicio",
+            {
+                "fields": ("imagen", "titulo", "subtitulo"),
+                "description": 'Configura los elementos del banner principal. Los botones "Conócenos" y "Contáctanos" no son editables aquí.',
+            },
+        ),
+    )
+
+    def has_add_permission(self, request):
+        # Solo permitir una única configuración
+        if HeroConfig.objects.exists():
+            return False
+        return True

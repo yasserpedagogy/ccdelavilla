@@ -2,12 +2,13 @@
 {% load static %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="hero vh-100 flex items-center justify-center relative">
+<!-- Hero Section DINÁMICO -->
+<section class="hero vh-100 flex items-center justify-center relative" 
+         style="background-image: url('{{ hero_imagen }}'); background-size: cover; background-position: center;">
     <div class="hero-overlay absolute top-0 right-0 bottom-0 left-0"></div>
     <div class="relative z-2 tc ph4">
-        <h1 class="f2 f1-l white mv0">Comunidad Cristiana de la Villa</h1>
-        <p class="f5 f4-l white-80 mt3 mb4">Viviendo en el poder del evangelio</p>
+        <h1 class="f2 f1-l white mv0">{{ hero_titulo }}</h1>
+        <p class="f5 f4-l white-80 mt3 mb4">{{ hero_subtitulo }}</p>
         <div>
             <a href="{% url 'core:about' %}" class="f6 link dim br2 ph3 pv2 dib white bg-gold mr3" style="font-weight: 700 !important;">Conócenos</a>
             <a href="{% url 'core:contact' %}" class="f6 link dim br2 ph3 pv2 dib mr3" style="background-color: #E0B354; color: #ffffff !important; font-weight: 700 !important;">Contáctanos</a>
